@@ -1,0 +1,672 @@
+/* Dashboard Design Improvements with Updated Color Scheme */
+
+/* Update root variables with new color scheme */
+:root {
+    --color-dark: #000000;
+    --color-darker: #000000;
+    --color-lighter: #000000;
+    --card-bg: #000000;
+    --sidebar-bg: #000000;
+    --main-bg: #000000;
+}
+
+/* Main dashboard wrapper */
+.dashboard-wrapper {
+    background: linear-gradient(135deg, var(--main-bg) 0%, var(--color-dark) 100%);
+    min-height: 100vh;
+}
+
+/* Sidebar improvements */
+.d-sidebar {
+    background: #000000 !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Header improvements */
+.d-header {
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Main content area */
+.main-content {
+    background: var(--main-bg);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Enhanced gradient background effects */
+.main-content::before {
+    content: '';
+    position: fixed;
+    top: -50%;
+    right: -20%;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(254, 113, 13, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: -1;
+    animation: float 6s ease-in-out infinite;
+}
+
+.main-content::after {
+    content: '';
+    position: fixed;
+    bottom: -50%;
+    left: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.03) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: -1;
+    animation: float 8s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+/* Enhanced cards with updated theme */
+.i-card-sm {
+    background: #000000;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    box-shadow:
+            0 8px 32px rgba(0, 0, 0, 0.3),
+            0 0 0 1px rgba(255, 255, 255, 0.05);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.i-card-sm::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+.i-card-sm:hover::before {
+    left: 100%;
+}
+
+.i-card-sm:hover {
+    transform: translateY(-8px);
+    box-shadow:
+            0 20px 40px rgba(0, 0, 0, 0.4),
+            0 0 0 1px rgba(254, 113, 13, 0.2);
+    border: 1px solid rgba(254, 113, 13, 0.3);
+}
+
+/* Stats cards special styling */
+.stats-card {
+    background: #000000;
+    border: 2px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+}
+
+.stats-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle, rgba(254, 113, 13, 0.1), transparent);
+    border-radius: 50%;
+}
+
+/* Investment, Matrix, Trade cards styling */
+.investment-card {
+    background: #000000;
+    border: 2px solid rgba(139, 92, 246, 0.2);
+    position: relative;
+}
+
+.investment-card .icon {
+    background: linear-gradient(135deg, #8b5cf6, #a855f7);
+    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
+}
+
+.matrix-card {
+    background: #000000;
+    border: 2px solid rgba(6, 182, 212, 0.2);
+}
+
+.matrix-card .icon {
+    background: linear-gradient(135deg, #06b6d4, #0891b2);
+    box-shadow: 0 8px 25px rgba(6, 182, 212, 0.3);
+}
+
+.trade-card {
+    background: #000000;
+    border: 2px solid rgba(251, 191, 36, 0.2);
+}
+
+.trade-card .icon {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    box-shadow: 0 8px 25px rgba(251, 191, 36, 0.3);
+}
+
+/* Deposit statistics card */
+.deposit-stats-card {
+    background: #000000;
+    border: 2px solid rgba(16, 185, 129, 0.2);
+    position: relative;
+}
+
+.deposit-stats-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #10b981, #059669, #047857);
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0.1;
+}
+
+/* Chart and statistics area */
+.chart-container {
+    background: #000000;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+}
+
+.chart-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(254, 113, 13, 0.5), transparent);
+}
+
+/* Form inputs in dashboard */
+.form-control {
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    background: rgba(0, 0, 0, 0.9);
+    border: 2px solid rgba(254, 113, 13, 0.5);
+    box-shadow: 0 0 0 4px rgba(254, 113, 13, 0.1);
+}
+
+/* Dark Select Element Styling */
+select.form-control,
+.form-select,
+select {
+    background: rgba(0, 0, 0, 0.9) !important;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%23ffffff' d='m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 12px center !important;
+    background-size: 12px !important;
+    border: 2px solid rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+    border-radius: 8px !important;
+    padding-right: 40px !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    transition: all 0.3s ease !important;
+}
+
+select.form-control:focus,
+.form-select:focus,
+select:focus {
+    background: rgba(0, 0, 0, 0.95) !important;
+    border: 2px solid rgba(254, 113, 13, 0.5) !important;
+    box-shadow: 0 0 0 4px rgba(254, 113, 13, 0.1) !important;
+    outline: none !important;
+}
+
+select.form-control:hover,
+.form-select:hover,
+select:hover {
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+    background: rgba(0, 0, 0, 0.95) !important;
+}
+
+/* Dark Select Options Styling */
+select.form-control option,
+.form-select option,
+select option {
+    background: #1a1a1a !important;
+    color: #ffffff !important;
+    padding: 12px 16px !important;
+    border: none !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+}
+
+select.form-control option:hover,
+.form-select option:hover,
+select option:hover {
+    background: rgba(254, 113, 13, 0.2) !important;
+    color: #ffffff !important;
+}
+
+select.form-control option:checked,
+.form-select option:checked,
+select option:checked {
+    background: rgba(254, 113, 13, 0.3) !important;
+    color: #ffffff !important;
+    font-weight: 500 !important;
+}
+
+select.form-control option:disabled,
+.form-select option:disabled,
+select option:disabled {
+    background: #0d0d0d !important;
+    color: #666666 !important;
+    cursor: not-allowed !important;
+}
+
+/* Multi-select styling */
+select[multiple].form-control,
+select[multiple].form-select,
+select[multiple] {
+    background-image: none !important;
+    padding-right: 16px !important;
+    min-height: 120px !important;
+}
+
+select[multiple].form-control option,
+select[multiple].form-select option,
+select[multiple] option {
+    padding: 8px 12px !important;
+    margin: 2px 0 !important;
+    border-radius: 4px !important;
+}
+
+/* Custom Select Wrapper for Enhanced Styling */
+.custom-select-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.custom-select-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 8px solid #ffffff;
+    transform: translateY(-50%);
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.custom-select-wrapper:hover::after {
+    border-top-color: rgba(254, 113, 13, 0.8);
+}
+
+.custom-select-wrapper select:focus + ::after {
+    border-top-color: rgba(254, 113, 13, 1);
+    transform: translateY(-50%) rotate(180deg);
+}
+
+/* Bootstrap Select Override */
+.bootstrap-select .dropdown-toggle {
+    background: rgba(0, 0, 0, 0.9) !important;
+    border: 2px solid rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+}
+
+.bootstrap-select .dropdown-menu {
+    background: #1a1a1a !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
+    backdrop-filter: blur(20px) !important;
+}
+
+.bootstrap-select .dropdown-menu li a {
+    color: #ffffff !important;
+    background: transparent !important;
+}
+
+.bootstrap-select .dropdown-menu li a:hover,
+.bootstrap-select .dropdown-menu li a:focus {
+    background: rgba(254, 113, 13, 0.2) !important;
+    color: #ffffff !important;
+}
+
+.bootstrap-select .dropdown-menu li.selected a {
+    background: rgba(254, 113, 13, 0.3) !important;
+    color: #ffffff !important;
+}
+
+/* Select2 Dark Theme Override */
+.select2-container--default .select2-selection--single {
+    background: rgba(0, 0, 0, 0.9) !important;
+    border: 2px solid rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+    height: auto !important;
+    padding: 8px 12px !important;
+    border-radius: 8px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #ffffff !important;
+    line-height: 1.5 !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    right: 12px !important;
+}
+
+.select2-dropdown {
+    background: #1a1a1a !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
+    backdrop-filter: blur(20px) !important;
+}
+
+.select2-container--default .select2-results__option {
+    background: transparent !important;
+    color: #ffffff !important;
+    padding: 12px 16px !important;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background: rgba(254, 113, 13, 0.2) !important;
+    color: #ffffff !important;
+}
+
+.select2-container--default .select2-results__option[aria-selected=true] {
+    background: rgba(254, 113, 13, 0.3) !important;
+    color: #ffffff !important;
+}
+
+/* Copy buttons styling */
+.copy-btn {
+    background: linear-gradient(135deg, #fe710d 0%, #ff8533 100%);
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    color: white;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(254, 113, 13, 0.3);
+}
+
+.copy-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(254, 113, 13, 0.4);
+    background: linear-gradient(135deg, #ff8533 0%, #fe710d 100%);
+}
+
+/* Action buttons */
+.action-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    padding: 10px 20px;
+    color: #ffffff;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.action-btn:hover {
+    background: rgba(254, 113, 13, 0.2);
+    border: 1px solid rgba(254, 113, 13, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(254, 113, 13, 0.2);
+}
+
+/* Enhanced sidebar menu */
+.sidebar-menu-item > .sidebar-menu-link {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 4px;
+    border-radius: 10px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.sidebar-menu-item > .sidebar-menu-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--color-primary);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.sidebar-menu-item > .sidebar-menu-link.active::before,
+.sidebar-menu-item > .sidebar-menu-link:hover::before {
+    transform: scaleY(1);
+}
+
+.sidebar-menu-item > .sidebar-menu-link:hover {
+    background: rgba(254, 113, 13, 0.1);
+    border: 1px solid rgba(254, 113, 13, 0.2);
+    transform: translateX(4px);
+}
+
+.sidebar-menu-item > .sidebar-menu-link.active {
+    background: linear-gradient(135deg, rgba(254, 113, 13, 0.2) 0%, rgba(254, 113, 13, 0.1) 100%);
+    border: 1px solid rgba(254, 113, 13, 0.3);
+    box-shadow: 0 4px 15px rgba(254, 113, 13, 0.1);
+}
+
+/* Text improvements */
+.title {
+    color: #ffffff;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle {
+    color: #d1d5db;
+    font-weight: 400;
+}
+
+/* Value displays */
+.value-display {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Loading states */
+.loading-shimmer {
+    background: linear-gradient(90deg,
+    rgba(255, 255, 255, 0.05) 25%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.05) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+    .i-card-sm {
+        margin-bottom: 16px;
+    }
+
+    .main-content::before,
+    .main-content::after {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+/* Utility classes */
+.glass-effect {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glow-orange {
+    box-shadow: 0 0 20px rgba(254, 113, 13, 0.3);
+}
+
+.glow-blue {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+.glow-green {
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+}
+
+/* Remove boxes from sidebar menu items only */
+.sidebar-menu-item > .sidebar-menu-link {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+}
+
+.sidebar-menu-item > .sidebar-menu-link::before {
+    display: none !important;
+}
+
+.sidebar-menu-item > .sidebar-menu-link:hover {
+    background: rgba(254, 113, 13, 0.1) !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+}
+
+.sidebar-menu-item > .sidebar-menu-link.active {
+    background: rgba(254, 113, 13, 0.15) !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    border-left: 3px solid #fe710d !important;
+}
+
+.sub-menu-item .sidebar-menu-link {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+.sub-menu-item .sidebar-menu-link:hover {
+    background: rgba(254, 113, 13, 0.08) !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.sub-menu-item .sidebar-menu-link.active {
+    background: rgba(254, 113, 13, 0.12) !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-left: 2px solid #fe710d !important;
+}
+
+/* Fix placeholder text visibility */
+.form-control::placeholder {
+    color: #888888 !important;
+    opacity: 1 !important;
+}
+
+.form-control::-webkit-input-placeholder {
+    color: #888888 !important;
+    opacity: 1 !important;
+}
+
+.form-control::-moz-placeholder {
+    color: #888888 !important;
+    opacity: 1 !important;
+}
+
+.form-control:-ms-input-placeholder {
+    color: #888888 !important;
+    opacity: 1 !important;
+}
+
+/* For better contrast on dark backgrounds */
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="password"]::placeholder,
+input[type="search"]::placeholder,
+input[type="number"]::placeholder,
+textarea::placeholder {
+    color: #999999 !important;
+    opacity: 1 !important;
+}
+
+/* Calendar input specific */
+input[type="date"]::placeholder,
+input[type="datetime-local"]::placeholder {
+    color: #aaaaaa !important;
+    opacity: 1 !important;
+}
+
+/* Fix scrollbar color on page reload and always keep it dark */
+::-webkit-scrollbar {
+    width: 8px !important;
+    height: 8px !important;
+}
+
+::-webkit-scrollbar-track {
+    background: #000000 !important;
+    border-radius: 0 !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333333 !important;
+    border-radius: 4px !important;
+    border: none !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555555 !important;
+}
+
+::-webkit-scrollbar-corner {
+    background: #000000 !important;
+}
+
+/* Firefox scrollbar */
+* {
+    scrollbar-width: thin !important;
+    scrollbar-color: #333333 #000000 !important;
+}
+
+html, body {
+    scrollbar-width: thin !important;
+    scrollbar-color: #333333 #000000 !important;
+}
+

@@ -10,13 +10,15 @@ use App\Services\Payment\PaymentGatewayService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Arr;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
+use App\Models\Transaction;  // Para salvar ou atualizar transações
 
 class PaymentGatewayController extends Controller
 {
     use UploadedFile;
 
-    public function __construct(protected PaymentGatewayService $paymentGatewayService){
-
+    public function __construct(protected PaymentGatewayService $paymentGatewayService)
+    {
     }
 
     public function index(): View
@@ -64,9 +66,38 @@ class PaymentGatewayController extends Controller
         Arr::set($prepParams, 'parameter', $parameter);
         Arr::set($prepParams, 'file', $fileName);
 
+        // Atualiza o gateway
         $gateway->update($prepParams);
+
         return back()->with('notify', [['success', __('Payment gateway has been updated')]]);
     }
 
+    /**
+     * Método para processar o callback do pagamento após a conclusão.
+     */
+    public function handlePaymentCallback(Request $request)
+    {
+        $paymentStatus = $request->input('status');
+        $orderId = $request->input('order_id');
+        $sessionId = $request->input('session_id');  // O ID da sessão de pagamento da VersellPay
 
+        // Verifique o status do pagamento e atualize o pedido ou transação conforme necessário
+        if ($paymentStatus == 'completed') {
+            // Localize a transação associada ao pedido usando o order_id
+            $transaction = Transaction::where('order_id', $orderId)->first();
+
+            if ($transaction) {
+                // Atualiza o status da transação para 'concluída'
+                $transaction->status = 'completed';
+                $transaction->payment_session_id = $sessionId;  // Salve o session_id para controle
+                $transaction->save();
+
+                // Retorne uma resposta de sucesso para a VersellPay
+                return response()->json(['status' => 'success']);
+            }
+        }
+
+        // Caso o pagamento não tenha sido completado ou outro erro, marque como falhado
+        return response()->json(['status' => 'failed']);
+    }
 }

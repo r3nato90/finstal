@@ -13,6 +13,8 @@ Route::get('queue-work', function () {
     Illuminate\Support\Facades\Artisan::call('queue:work', ['--stop-when-empty' => true]);
 })->name('queue.work');
 
+Route::post('/payment/callback', [PaymentGatewayController::class, 'handlePaymentCallback'])->name('payment.callback');
+
 
 Route::middleware(['security.headers', 'xss'])->group(function () {
     Route::middleware(['web'])->group(function () {
